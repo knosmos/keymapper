@@ -30,7 +30,7 @@ def loadData():
             print('datafile "%s" successfully loaded.'%dataFilename)
     except FileNotFoundError:
             print('datafile not found, will create.')
-            data = {'A':1}
+            data = {'placeholder':1} # An empty dictionary causes keymapdisplay to not be able to find a max val.
 
 def saveData():
     global data, afterLastSave

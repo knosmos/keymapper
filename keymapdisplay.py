@@ -62,7 +62,7 @@ def draw(surface,keys,data):
         for key in keys[row]:
             if key[0] in data:
                 x = data[key[0]]/maxkeypresses # Linear scale
-                intensity=x**0.5 # Exponential scale
+                intensity=x**0.4 # Polynomial scale
             else: intensity=0
             p = lowestcolor.copy()
             for c in range(3):
@@ -81,7 +81,7 @@ def main():
     while True:
         data = read("keymapper.p")
         draw(surface,keys,data)
-        time.sleep(0.1)
+        time.sleep(1)
         for event in pygame.event.get():
             if event.type == QUIT: pygame.quit()
 

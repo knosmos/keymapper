@@ -59,11 +59,13 @@ function record(event){ // Logs a keypress event
     }
     if (key == "rshift"){ data["lshift"] = data["rshift"] } // We can only detect one shift key
     updateKeyboard();
+    updateFreqBars();
 }
 
 function erase(){
     data = {'placeholder':0};
     updateKeyboard();
+    setupFreqBars();
 }
 
 function colorRamp(heat){
@@ -88,4 +90,42 @@ function updateKeyboard(){
     }
 }
 
+function setupFreqBars(){
+    let d = document.getElementById("freqencies");
+    d.innerHTML = "";
+    for (let row of keys){
+        for (let key of row){
+            d.innerHTML += `<div class="freqbar" id="freq-${key[0]}"></div>`;
+        }
+    }
+}
+
+function compare(a,b){
+    if (a[1]<b[1]){
+        return 1;
+    }
+    if (a[1]>b[1]){
+        return -1;
+    }
+    return 0;
+}
+
+function updateFreqBars(){
+    let maxkeypresses = Math.max(...Object.values(data));
+    let sortedData = Object.entries(data);
+    sortedData.sort(compare);
+    let totalSum = Object.values(data).reduce(function(a,b){return a+b},0);
+    let ranking = 0;
+    for (key of sortedData){
+        if (key[0] != "placeholder"){
+            item = document.getElementById(`freq-${key[0]}`);
+            item.innerHTML = `${key[0]}: ${Math.round((key[1]/totalSum)*100)}% (${key[1]})`;
+            item.style.width = `${(key[1]/maxkeypresses)*90}%`;    
+            item.style.top = `${ranking*30}px`;
+            ranking += 1;
+        }
+    }
+}
+
 setupKeyboard();
+setupFreqBars();

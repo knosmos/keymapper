@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Keymapper</title>
+        <link rel=stylesheet href="https://jierueichang.github.io/assets/style.css" type='text/css'>
+    </head>
+    <body onkeydown="record(event)">
+        <style>
+            #keyboard{
+                display:grid;
+            }
+            .keyboardbutton{
+                margin:2px;
+                padding-top:10px;
+                padding-bottom:10px;
+                text-align:center;
+                font-size:18pt;
+                transition:background-color 0.2s;
+            }
+            @media screen and (max-width:800px){
+                .keyboardbutton{
+                    padding-top:4px;
+                    padding-bottom:4px;
+                    font-size:14pt;
+                }
+            }
+        </style>
+        <nav>
+            <a href="https://jierueichang.github.io">JIERUEI<span style='color:rgb(34, 179, 204)'>CHANG</span></a> 
+        </nav>
+        <h1>KEYBOARD HEATMAP</h1>
+        <div class='container'>
+            <div id=keyboard></div>
+        </div>
+        <h2 id='description'>type anywhere inside this page
+            <br><br>
+            <a onclick="erase()" class='linkbutton'>Reset Keyboard</a>
+            <a href="https://github.com/knosmos/keymapper" class='linkbutton'>Github Repository</a>
+        </h2>
+        
+        <script src='main.js'></script>
+    </body>
+</html>

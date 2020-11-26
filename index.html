@@ -11,11 +11,22 @@
             }
             .keyboardbutton{
                 margin:2px;
-                padding-top:10px;
-                padding-bottom:10px;
+                padding-top:5px;
+                padding-bottom:5px;
                 text-align:center;
-                font-size:18pt;
+                font-size:14pt;
                 transition:background-color 0.2s;
+            }
+            .freqbar{
+                margin:2px;
+                font-size:14pt;
+                position:absolute;
+                transition:top 0.4s;
+                background-color:rgb(204, 34, 128);
+                text-align:right;
+                padding:2px;
+                overflow-x:visible;
+                white-space:nowrap;
             }
             @media screen and (max-width:800px){
                 .keyboardbutton{
@@ -31,13 +42,15 @@
         <h1>KEYBOARD HEATMAP</h1>
         <div class='container'>
             <div id=keyboard></div>
+            <h2 id='description'>type anywhere inside this page</h2>
+            <div style="text-align:center">
+                <div id="freqencies" style="display:inline-block;position:relative;width:50%;height:300px;overflow:hidden;"></div>
+            </div>
         </div>
-        <h2 id='description'>type anywhere inside this page
-            <br><br>
+        <div style="position:fixed;bottom:30px;right:10px;">
             <a onclick="erase()" class='linkbutton'>Reset Keyboard</a>
             <a href="https://github.com/knosmos/keymapper" class='linkbutton'>Github Repository</a>
-        </h2>
-        
+        </div>
         <script src='main.js'></script>
     </body>
 </html>
